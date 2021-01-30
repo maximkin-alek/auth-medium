@@ -30,6 +30,7 @@ const store = new Vuex.Store({
         setState(state, { name, value }) {
             return (state[name] = value);
         },
+       
     },
 
     actions: {

@@ -10,8 +10,10 @@
         :text="card.description"
         :created="card.createdAt"
         :claps="card.claps"
+        :user="user"
+        :id ="card.id"
       />
-      <p>{{ user.role }}</p>
+
       <button @click="login">Логин</button>
     </div>
   </div>
@@ -29,8 +31,9 @@ export default {
   },
   methods: {
     login() {
-      this.$store.dispatch("login", { email: "reader@mail.com" });
+      this.$store.dispatch("login", { email: "writer3@mail.com" });
     },
+    
   },
   computed: {
     cards() {
