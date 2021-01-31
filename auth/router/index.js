@@ -2,6 +2,7 @@ import VueRouter from 'vue-router';
 import MainPage from '../src/pages/MainPage'
 import LoginPage from '../src/pages/LoginPage'
 import CreateCardPage from '../src/pages/CreateCardPage'
+import EditCardPage from '../src/pages/EditCardPage'
 
 export default  new VueRouter({
     mode: 'history',
@@ -20,6 +21,11 @@ export default  new VueRouter({
             path: '/create',
             name: 'create-card',
             component: CreateCardPage
+        },
+        {
+            path: '/:id',
+            name: 'edit-card',
+            component: EditCardPage
         },
     ]
 })

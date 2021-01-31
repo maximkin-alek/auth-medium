@@ -12,6 +12,7 @@
         :claps="card.claps"
         :user="user"
         :id="card.id"
+        :userID='card.userId'
       />
     </div>
    
@@ -47,7 +48,7 @@ export default {
 <style scoped>
 .container {
   display: grid;
- grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+ grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
   padding: 50px;
     gap: 10px;
 }</style>

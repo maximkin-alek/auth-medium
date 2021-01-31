@@ -1,13 +1,13 @@
 <template>
   <form @submit.prevent="CreateCard" class="createCardForm">
     <b-field label="Title">
-      <b-input v-model="title" maxlength="50" required=""></b-input>
+      <b-input v-model="title" maxlength="100" required=""></b-input>
     </b-field>
 
     <b-field label="Text">
       <b-input
         required
-        maxlength="300"
+        maxlength="1000"
         v-model="text"
         type="textarea"
       ></b-input>
@@ -24,6 +24,7 @@ export default {
     return {
       title: "",
       text: "",
+      date: ""
     };
   },
   computed: {
@@ -33,7 +34,7 @@ export default {
   },
   methods: {
     CreateCard() {
-      const date = new Date();
+      this.date = new Date();
       const id = Math.random()
         .toString(16)
         .slice(2);
@@ -43,8 +44,8 @@ export default {
           title: this.title,
           description: this.text,
           claps: 0,
-          createdAt: date,
-          updateAt: date,
+          createdAt: this.date,
+          updateAt: this.date,
           userId: this.user.id,
         })
         .then(() => {

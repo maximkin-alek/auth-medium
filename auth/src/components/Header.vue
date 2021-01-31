@@ -3,7 +3,7 @@
     <p @click="$router.push({ name: 'main' }).catch(() => {})" class="logo">
       Authorization Vue
     </p>
-    <router-link to="/create">Создать пост</router-link>
+    <router-link v-if="user.role === 'writer'" to="/create">Создать пост</router-link>
     <router-link
       v-if="user.login == undefined"
       class="user-name"
