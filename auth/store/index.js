@@ -2,7 +2,14 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
 
+
+
+
+
 Vue.use(Vuex);
+
+
+
 
 const store = new Vuex.Store({
     state: {
@@ -30,7 +37,7 @@ const store = new Vuex.Store({
         setState(state, { name, value }) {
             return (state[name] = value);
         },
-       
+
     },
 
     actions: {
@@ -57,15 +64,28 @@ const store = new Vuex.Store({
                 })
                 .catch((err) => { console.log(err) });
         },
-        login(state, { email }) {
-            const user = state.state.users.find((user) => { 
-               return user.login === email });
+        login(state, { email, password }) {
+            const user = state.state.users.find((user) => {
+                return user.login === email
+            });
+
+            if (!user || String(user.password) !== password) {
+                return alert('Неверный логин или пароль')
+            } else {
+                return state.commit('setState', {
+                    name: 'loggedUser',
+                    value: user,
+                });
+            }
+        },
+        logout(state) {
             return state.commit('setState', {
                 name: 'loggedUser',
-                value: user,
+                value: {},
             });
-        }
+        },
 
     }
+
 });
 export default store

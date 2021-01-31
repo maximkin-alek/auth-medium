@@ -1,32 +1,57 @@
 <template>
-    <header class="header">
-        <button class="user-name">Имя пользователя</button>
-    </header>
+  <header class="header">
+    <p @click="$router.push({ name: 'main' }).catch(() => {})" class="logo">
+      Authorization Vue
+    </p>
+    <router-link to="/create">Создать пост</router-link>
+    <router-link
+      v-if="user.login == undefined"
+      class="user-name"
+      :to="'/login'"
+      >Войти</router-link
+    >
+    <b-button v-else class="user-name" @click="logout"
+      >Выйти из системы</b-button
+    >
+  </header>
 </template>
 
 <script>
-    export default {
-        
-    }
+export default {
+  computed: {
+    user() {
+      return this.$store.getters.getLoggedUser;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+    },
+    
+  },
+};
 </script>
 
-<style  scoped>
+<style scoped>
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-    .header {
-        min-height: 80px;
-        width: 100%;
-        padding: 0 10%;
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        background-color: rgb(196, 243, 215);
-    }
-    .user-name {
-        width: fit-content;
-        height: 30px;
-        border-radius: 10px;
-        
-    }
+.header {
+  min-height: 80px;
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(151, 150, 196);
+}
+.logo {
+  font-size: 32px;
+  cursor: pointer;
+}
+.user-name {
+  width: fit-content;
+  height: 30px;
+  border-radius: 10px;
+}
 </style>

@@ -1,52 +1,15 @@
 <template>
   <div id="app">
-    <Header />
-
-    <div class="container">
-      <Card
-        v-for="card in cards"
-        :key="card.id"
-        :title="card.title"
-        :text="card.description"
-        :created="card.createdAt"
-        :claps="card.claps"
-        :user="user"
-        :id ="card.id"
-      />
-
-      <button @click="login">Логин</button>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import Header from "@/components/Header";
-import Card from "@/components/Card";
-
 export default {
   name: "App",
-  components: {
-    Header,
-    Card,
-  },
-  methods: {
-    login() {
-      this.$store.dispatch("login", { email: "writer3@mail.com" });
-    },
-    
-  },
-  computed: {
-    cards() {
-      return this.$store.getters.getPosts;
-    },
-    user() {
-      return this.$store.getters.getLoggedUser;
-    },
-  },
-  beforeMount() {
-    this.$store.dispatch("fetchPosts");
-    this.$store.dispatch("fetchUsers");
-  },
+
+  
+  
 };
 </script>
 
@@ -55,10 +18,10 @@ export default {
   font-family: Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+   background-color: rgba(204, 204, 204, 0.904);
+   min-height: 100vh;
+   height: 100%;
 }
-.container {
-  display: grid;
-  grid-auto-flow: column;
-  padding: 50px;
-}
+
+
 </style>
