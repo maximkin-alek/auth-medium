@@ -6,6 +6,7 @@
 
     <b-field label="Text">
       <b-input
+      class="editCardForm__text"
         required
         maxlength="1000"
         v-model="text"
@@ -13,7 +14,6 @@
       ></b-input>
     </b-field>
     <b-button tag="input" native-type="submit" value="Сохранить изменения" />
-    <p>{{date}}</p>
   </form>
 </template>
 
@@ -69,5 +69,9 @@ export default {
   padding-top: 200px;
   margin: 0 auto;
   width: 50%;
+}
+.editCardForm__text{
+  min-width: 100px;
+  height: fit-content;
 }
 </style>

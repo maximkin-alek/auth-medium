@@ -25,6 +25,7 @@ export default {
       this.$store.dispatch("login", { email: this.email, password: this.password });
       this.email = '';
       this.password = '';
+      this.$router.push({ name: 'main' }).catch(() => {})
     },
   }
 };

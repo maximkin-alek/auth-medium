@@ -3,10 +3,10 @@
     <p @click="$router.push({ name: 'main' }).catch(() => {})" class="logo">
       Authorization Vue
     </p>
-    <router-link v-if="user.role === 'writer'" to="/create">Создать пост</router-link>
+    <router-link class="link" v-if="user.role === 'writer'" to="/create">Создать пост</router-link>
     <router-link
       v-if="user.login == undefined"
-      class="user-name"
+      class="user-name link"
       :to="'/login'"
       >Войти</router-link
     >
@@ -53,5 +53,13 @@ export default {
   width: fit-content;
   height: 30px;
   border-radius: 10px;
+}
+.link{
+  font-size: 18px;
+  color: white;
+  transition: color 0.3s ease-in-out;
+}
+.link:hover {
+  color: rgb(223, 238, 18);
 }
 </style>
