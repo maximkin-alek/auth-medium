@@ -16,7 +16,4 @@
 - reader@mail.com 
 - writer2@mail.com  
 Пароль для всех пользователей 123456
-```
-
-
 
