@@ -1,24 +1,22 @@
-# auth
+# Прототип авторизации. 
 
-## Project setup
+## Установка проекта
 ```
-npm install
+- npm install
 ```
+## Запуск dev сборки
+```
+- npm run serve
+```
+## Запуск Json сервера
+- json-server --watch db.json   
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
+## Список пользователей для авторизации
+- writer3@mail.com  
+- reader@mail.com 
+- writer2@mail.com  
+Пароль для всех пользователей 123456
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+
