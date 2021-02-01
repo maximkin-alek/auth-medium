@@ -2,11 +2,11 @@
   <div class="card">
     <h2 class="card__tatle">{{ title }}</h2>
     <p class="card__text">{{ text }}</p>
-    <p class="card__created">{{ created }}</p>
+    <p class="card__created">{{ createdDate }}</p>
     <div class="card__button-container">
       <b-button
         @click="slam"
-        v-if="user.role === 'reader'"
+        :disabled="user.role !== 'reader'"
         class="card__button card__claps"
       >
         &#128079;
@@ -16,10 +16,11 @@
         @click="deleteCard"
         v-if="user.role === 'writer' && user.id === userID"
         class="card__button card__delete"
+        type="is-danger is-light"
         >&#10008; Удалить</b-button
       >
       <b-button
-        @click="$router.push({ name: 'edit-card', params: {id: id} })"
+        @click="$router.push({ name: 'edit-card', params: { id: id } })"
         v-if="user.role === 'writer' && user.id === userID"
         class="card__button card__edit"
       >
@@ -34,6 +35,20 @@ import axios from "axios";
 
 export default {
   props: ["title", "text", "created", "claps", "user", "id", "userID"],
+  computed: {
+    createdDate() {
+      let dateCreated = new Date(this.created);
+      const formatter = new Intl.DateTimeFormat("ru", {
+        year: "numeric",
+        month: "long",
+        day: "numeric",
+      });
+      let dateStr = formatter.format(dateCreated);
+
+      return dateStr;
+    },
+  },
+
   methods: {
     slam() {
       console.log(this);

@@ -13,6 +13,7 @@
       ></b-input>
     </b-field>
     <b-button tag="input" native-type="submit" value="Сохранить изменения" />
+    <p>{{date}}</p>
   </form>
 </template>
 
@@ -20,7 +21,7 @@
 import axios from "axios";
 export default {
   created() {
-    this.getCardEdit();
+    this.getCardData();
   },
   data() {
     return {
@@ -28,23 +29,45 @@ export default {
       text: "",
     };
   },
+  computed: {
+    date() {
+      return new Date();
+    },
+  },
   methods: {
-    getCardEdit() {
+    getCardData() {
       axios
         .get(`http://localhost:3000/posts/${this.$route.params.id}`)
         .then((card) => {
-         this.title = card.data.title;
-         this.text = card.data.description;
-
+          this.title = card.data.title;
+          this.text = card.data.description;
         })
         .catch((err) => {
           alert(err);
         });
     },
+    editCard() {
+      axios
+        .patch(`http://localhost:3000/posts/${this.$route.params.id}`, {
+          title: this.title,
+          description: this.text,
+          updateAt: this.date,
+        })
+        .then(() => {
+          alert("Данные сохранены");
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
-
-  mounted() {},
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+.editCardForm {
+  padding-top: 200px;
+  margin: 0 auto;
+  width: 50%;
+}
+</style>
