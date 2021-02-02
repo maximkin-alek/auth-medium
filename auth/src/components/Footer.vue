@@ -45,6 +45,7 @@ export default {
   align-items: center;
   padding: 0 104px;
   box-sizing: border-box;
+  
 }
 .footer__copyright {
   font-size: 20px;
