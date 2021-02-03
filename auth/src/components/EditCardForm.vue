@@ -6,7 +6,7 @@
 
     <b-field label="Text">
       <b-input
-      class="editCardForm__text"
+        class="editCardForm__text"
         required
         maxlength="1000"
         v-model="text"
@@ -68,10 +68,6 @@ export default {
 .editCardForm {
   padding-top: 200px;
   margin: 0 auto;
-  width: 50%;
-}
-.editCardForm__text{
-  min-width: 100px;
-  height: fit-content;
+  width: 80%;
 }
 </style>
